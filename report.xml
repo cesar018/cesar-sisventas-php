@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<detalle>
+  <detalle>
+    <iddetalle>1</iddetalle>
+    <precia>2.00</precia>
+    <cantidad>1</cantidad>
+    <idproducto>1</idproducto>
+    <idventa>1</idventa>
+  </detalle>
+</detalle>
