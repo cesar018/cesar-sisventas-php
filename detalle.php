@@ -1,6 +1,10 @@
 <?php
-    require "conexion.php";
-    $resp = mysqli_query($conex, "select *from detalle");
+    $gi=$_POST['gi'];
+    $fi=$_POST['fi']; 
+    $ff=$_POST['ff'];
+    function imprimir($fechaini, $fechafin, $idcliente){
+        require "conexion.php";
+    $resp = mysqli_query($conex, "SELECT * from cliente c JOIN venta v ON (c.idcliente = v.idcliente) JOIN detalle d ON (v.idventa = d.idventa) JOIN producto p ON (p.idproducto = d.idproducto) WHERE v.fecha BETWEEN '$fechaini' AND '$fechafin' AND c.idcliente = $idcliente ;");
     if($resp){
         $xml = new DOMDocument("1.0");
         $xml->formatOutput = true;
@@ -10,20 +14,21 @@
             $detalle=$xml->createElement("detalle");
             $fitness->appendChild($detalle);
 
-            $iddetalle = $xml->createElement("iddetalle", $row['iddetalle']);
-            $detalle->appendChild($iddetalle);
+            $nombres = $xml->createElement("nombres", $row['nombres']);
+            $detalle->appendChild($nombres);
 
-            $precia = $xml->createElement("precia", $row['precia']);
-            $detalle->appendChild($precia);
+            $apellidos = $xml->createElement("apedillos", $row['apellidos']);
+            $detalle->appendChild($apellidos);
+
+            $nomprod = $xml->createElement("nomprod", $row['nomprod']);
+            $detalle->appendChild($nomprod);
 
             $cantidad = $xml->createElement("cantidad", $row['cantidad']);
             $detalle->appendChild($cantidad);
 
-            $idproducto = $xml->createElement("idproducto", $row['idproducto']);
-            $detalle->appendChild($idproducto);
+            $precia = $xml->createElement("precio", $row['precia']);
+            $detalle->appendChild($precia);
 
-            $idventa = $xml->createElement("idventa", $row['idventa']);
-            $detalle->appendChild($idventa);
 
         }
         echo "<xmp>".$xml->saveXML()."</xmp>";
@@ -31,4 +36,6 @@
     }else{
         echo "error...!";
     }
+    }
+    imprimir($fi,$ff,$gi);
 ?>

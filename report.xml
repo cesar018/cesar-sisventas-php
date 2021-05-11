@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <detalle>
   <detalle>
-    <iddetalle>1</iddetalle>
-    <precia>2.00</precia>
+    <nombres>Anays </nombres>
+    <apedillos>Mendez</apedillos>
+    <nomprod>helado</nomprod>
     <cantidad>1</cantidad>
-    <idproducto>1</idproducto>
-    <idventa>1</idventa>
+    <precio>1.00</precio>
   </detalle>
 </detalle>
